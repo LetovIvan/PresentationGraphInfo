@@ -58,6 +58,24 @@ namespace LAB1
             }
         }
 
+        public void Turn90()
+        {
+            Bitmap bmp90 = new(image.Height, image.Width);
+            for (int i = 0; i < image.Width; i++)
+            {
+                for (int j = 0; j < image.Height; j++)
+                {
+                    bmp90.SetPixel(j, i, (image.GetPixel(i, j)));
+                }
+            }
+            bmp90.Save(imagePath+"_90.bmp");
+        }
+
+        public void OpenImage()
+        {
+            
+        }
+
         public void Close()
         {
             image.Dispose();

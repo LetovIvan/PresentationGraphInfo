@@ -9,8 +9,9 @@ namespace LAB1
         {
             BMPEditorcs bmpEditorcs = new("D:\\GIT_MAIN\\PresentationGraphInfo\\_сarib_TC.bmp");
             //bmpEditorcs.BWFilter();
-            bmpEditorcs.Frame(15);
-            bmpEditorcs.Save();
+            //bmpEditorcs.Frame(15);
+            //bmpEditorcs.Turn90();
+            //bmpEditorcs.Save();
             bmpEditorcs.Close();
             //bmpEditorcs.Info();
         }
