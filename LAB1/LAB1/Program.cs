@@ -12,6 +12,7 @@ namespace LAB1
             //bmpEditorcs.Frame(15);
             //bmpEditorcs.Turn90();
             //bmpEditorcs.Save();
+            bmpEditorcs.OpenImage();
             bmpEditorcs.Close();
             //bmpEditorcs.Info();
         }
