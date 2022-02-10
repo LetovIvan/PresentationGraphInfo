@@ -136,9 +136,30 @@ namespace LAB1
 
         }
 
-        public void Scaler(float Scale)
+        public void Scaler(int Scale)
         {
+            Bitmap bmp_256_color = new("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT256.bmp");
             
+            int Width = bmp_256_color.Width * Scale;
+            int Height = bmp_256_color.Height * Scale;
+            Bitmap temp = new(Width, Height);
+            for (int i = 0; i < Width; i+= Scale)
+            {
+                for (int j = 0; j < Height; j+= Scale)
+                {
+                    byte A = Convert.ToByte(bmp_256_color.GetPixel(i / Scale, j / Scale).A);
+                    byte R = Convert.ToByte(bmp_256_color.GetPixel(i / Scale, j / Scale).R);
+                    byte G = Convert.ToByte(bmp_256_color.GetPixel(i / Scale, j / Scale).G);
+                    byte B = Convert.ToByte(bmp_256_color.GetPixel(i / Scale, j / Scale).B);
+                    Color cvet = Color.FromArgb(A, R, G, B);
+                    for (int S = 0; S < Scale; S++)
+                    { 
+                        temp.SetPixel(i + S, j, cvet);
+                        temp.SetPixel(i, j + S, cvet);
+                    }
+                }
+            }
+            temp.Save("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT256_color.bmp");
         }
 
         public void Close()
