@@ -35,6 +35,7 @@ namespace LAB1
             }
             
         }
+
         public void Save()
         {
             image.Save(imagePath + "_new.bmp");
@@ -72,56 +73,72 @@ namespace LAB1
             bmp90.Save(imagePath+"_90.bmp");
         }
 
-        public void OpenImage()
+        public void OpenImage(int Task)
         {
-            Bitmap bmp_16 = new("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT16.bmp");
-            Bitmap bmp_256_color = new("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT256.bmp");
-            Bitmap bmp_TC = new("D:\\GIT_MAIN\\PresentationGraphInfo\\_сarib_TC.bmp");
-
-            /* for (int i = 0; i < image.Width; i++)
-             {
-                 for (int j = 0; j < image.Height; j++)
-                 {
-                     byte R = Convert.ToByte(bmp_16.GetPixel(i, j).R);
-                     byte G = Convert.ToByte(bmp_16.GetPixel(i, j).G);
-                     byte B = Convert.ToByte(bmp_16.GetPixel(i, j).B);
-                     Color cvet = Color.FromArgb(0, R, G, B);
-                     bmp_16.SetPixel(i, j, cvet);
-                 }
-             }
-
-             bmp_16.Save(imagePath + "_16.bmp");
-            */
-            for (int i = 0; i < image.Width; i++)
+            if (Task == 1)
             {
-                for (int j = 0; j < image.Height; j++)
+                Bitmap bmp_16 = new("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT16.bmp");
+                Bitmap temp = new(bmp_16.Width, bmp_16.Height);
+                for (int i = 0; i < bmp_16.Width; i++)
                 {
-                    byte Alpha = Convert.ToByte(bmp_256_color.GetPixel(i, j).A);
-                    byte R = Convert.ToByte(bmp_256_color.GetPixel(i, j).R);
-                    byte G = Convert.ToByte(bmp_256_color.GetPixel(i, j).G);
-                    byte B = Convert.ToByte(bmp_256_color.GetPixel(i, j).B);
-                    Color cvet = Color.FromArgb(0, R, G, B);
-                    bmp_256_color.SetPixel(i, j, cvet);
+                    for (int j = 0; j < bmp_16.Height; j++)
+                    {
+                        byte A = Convert.ToByte(bmp_16.GetPixel(i, j).A);
+                        byte R = Convert.ToByte(bmp_16.GetPixel(i, j).R);
+                        byte G = Convert.ToByte(bmp_16.GetPixel(i, j).G);
+                        byte B = Convert.ToByte(bmp_16.GetPixel(i, j).B);
+                        Color cvet = Color.FromArgb(A, R, G, B);
+                        temp.SetPixel(i, j, cvet);
+                    }
                 }
+                temp.Save("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT16_new.bmp");
             }
 
-            bmp_256_color.Save("D:\\GIT_MAIN\\PresentationGraphInfo\\bmp_256_color.bmp");
-
-            for (int i = 0; i < image.Width; i++)
+            else if (Task == 2)
             {
-                for (int j = 0; j < image.Height; j++)
+                Bitmap bmp_256_color = new("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT256.bmp");
+                Bitmap temp = new(bmp_256_color.Width, bmp_256_color.Height);
+                for (int i = 0; i < bmp_256_color.Width; i++)
                 {
-                    byte Alpha = Convert.ToByte(bmp_TC.GetPixel(i, j).A);
-                    byte R = Convert.ToByte(bmp_TC.GetPixel(i, j).R);
-                    byte G = Convert.ToByte(bmp_TC.GetPixel(i, j).G);
-                    byte B = Convert.ToByte(bmp_TC.GetPixel(i, j).B);
-                    Color cvet = Color.FromArgb(Alpha, R, G, B);
-                    bmp_TC.SetPixel(i, j, cvet);
+                    for (int j = 0; j < bmp_256_color.Height; j++)
+                    {
+                        byte A = Convert.ToByte(bmp_256_color.GetPixel(i, j).A);
+                        byte R = Convert.ToByte(bmp_256_color.GetPixel(i, j).R);
+                        byte G = Convert.ToByte(bmp_256_color.GetPixel(i, j).G);
+                        byte B = Convert.ToByte(bmp_256_color.GetPixel(i, j).B);
+                        Color cvet = Color.FromArgb(A, R, G, B);
+                        temp.SetPixel(i, j, cvet);
+                    }
                 }
+                temp.Save("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT256_color.bmp");
             }
 
-            bmp_TC.Save("D:\\GIT_MAIN\\PresentationGraphInfo\\NIGGA.bmp");
+            else if (Task == 3)
+            {
+                Bitmap bmp_TC = new("D:\\GIT_MAIN\\PresentationGraphInfo\\_сarib_TC.bmp");
+                Bitmap temp = new(bmp_TC.Width, bmp_TC.Height);
+                for (int i = 0; i < bmp_TC.Width; i++)
+                {
+                    for (int j = 0; j < bmp_TC.Height; j++)
+                    {
+                        byte A = Convert.ToByte(bmp_TC.GetPixel(i, j).A);
+                        byte R = Convert.ToByte(bmp_TC.GetPixel(i, j).R);
+                        byte G = Convert.ToByte(bmp_TC.GetPixel(i, j).G);
+                        byte B = Convert.ToByte(bmp_TC.GetPixel(i, j).B);
+                        Color cvet = Color.FromArgb(A, R, G, B);
+                        temp.SetPixel(i, j, cvet);
+                    }
+                }
+                temp.Save("D:\\GIT_MAIN\\PresentationGraphInfo\\_сarib_TC_color.bmp");
+            }
+            else
+                Console.WriteLine("uncorect Task!");
 
+        }
+
+        public void Scaler(float Scale)
+        {
+            
         }
 
         public void Close()
@@ -134,6 +151,6 @@ namespace LAB1
             BMPInfo.ReadHeader(imagePath);
             BMPInfo.ShowHeader();
         }
-        //"D:\\GIT_MAIN\\PresentationGraphInfo\\_сarib_TC.bmp"
     }
 }
+        //"D:\\GIT_MAIN\\PresentationGraphInfo\\_сarib_TC.bmp"
