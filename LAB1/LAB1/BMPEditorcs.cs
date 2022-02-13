@@ -162,6 +162,27 @@ namespace LAB1
             temp.Save("D:\\GIT_MAIN\\PresentationGraphInfo\\CAT256_color.bmp");
         }
 
+        public void EnterLogo()
+        {
+            Bitmap logo = new("D:\\GIT_MAIN\\PresentationGraphInfo\\Logo.bmp");
+            for (int i = 0; i < logo.Width; i++)
+            {
+                for (int j = 0; j < logo.Height - 1; j++)
+                {
+                    if ((logo.GetPixel(i, j).R != 255) && (logo.GetPixel(i, j).G != 255) && (logo.GetPixel(i, j).B != 255))
+                    { 
+                    byte A = Convert.ToByte(logo.GetPixel(i, j).A);
+                    byte R = Convert.ToByte(image.GetPixel(i, j).R * 0.5 + logo.GetPixel(i, j).R * 0.5);
+                    byte G = Convert.ToByte(image.GetPixel(i, j).G * 0.5 + logo.GetPixel(i, j).G * 0.5);
+                    byte B = Convert.ToByte(image.GetPixel(i, j).B * 0.5 + logo.GetPixel(i, j).B * 0.5);
+                    Color cvet = Color.FromArgb(A, R, G, B);
+                    image.SetPixel(i, j, cvet);
+                    }
+                    
+                }    
+            }    
+        }
+
         public void Close()
         {
             image.Dispose();
